@@ -99,8 +99,12 @@ bool ChatMessageCallback(AShooterPlayerController* _this, FString* Message, int 
     msg.SenderId = AsaApi::GetApiUtils().GetTribeID(_this);
     msg.ReceivedTime = -1.0f;
 
-    FString test = FString::Format("<RichColor Color=\"1,0,1,0\">{}</>", *Message->ToStringUTF8().c_str());
-    msg.Message = test;
+
+    std::string conv = (*Message).ToStringUTF8();
+
+    FString convBack = FString::FromStringUTF8(fmt::format("<RichColor Color=\"1,0,1,1\">{}</>", conv));
+
+    msg.Message = convBack;
     msg.SenderName = senderName;
     msg.SenderSteamName = senderSteamName;
     msg.SenderTribeName = tribename;
