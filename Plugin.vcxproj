@@ -7,7 +7,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="src\Plugin.cpp" />
+    <ClCompile Include="src\ASAChatUnicode.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="vcpkg.json" />
@@ -777,7 +777,7 @@
     <ProjectGuid>{5de8d89c-fa7f-4d80-b056-3874b87e0184}</ProjectGuid>
     <RootNamespace>Plugin</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
-    <ProjectName>PluginTemplate</ProjectName>
+    <ProjectName>ASAChatUnicode</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
@@ -833,7 +833,10 @@
       <Command>if exist "$(TargetDir)$(TargetFileName).arkapi" del /q "$(TargetDir)$(TargetFileName).arkapi"</Command>
     </PreBuildEvent>
     <PostBuildEvent>
-      <Command>copy /y "$(TargetDir)$(TargetFileName)" "$(TargetDir)$(TargetFileName).arkapi"</Command>
+      <Command>if exist "$(TargetDir)$(TargetFileName).arkapi" del /q "$(TargetDir)$(TargetFileName).arkapi" mkdir "$(SolutionDir)Output\$(ProjectName)\"
+copy /y "$(TargetDir)$(TargetFileName)" "$(SolutionDir)Output\$(ProjectName)\$(TargetFileName).arkapi"
+copy /y "$(TargetPath)" "$(SolutionDir)Output\$(ProjectName)\$(TargetFileName)"
+copy /y "$(SolutionDir)configs\PluginInfo.json" "$(SolutionDir)Output\$(ProjectName)\PluginInfo.json"</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

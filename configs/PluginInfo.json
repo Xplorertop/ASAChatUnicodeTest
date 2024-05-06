@@ -1,6 +1,6 @@
 {
-    "FullName": "Plugin Template",
-    "Description": "Simple plugin template",
+    "FullName": "ASA Chat Unicode",
+    "Description": "Test ASA Chat Unicode support",
     "Version": 0.1,
     "MinApiVersion": 1.0
 }
